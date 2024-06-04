@@ -1,0 +1,272 @@
+﻿@{
+    ViewData["Title"] = "TimeSheet";
+}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TimeSheet</title>
+@*	<link rel="stylesheet" href="~/css/HorasIndex.css"> -->*@
+
+<style>
+		.weekend {
+			background-color: lightgray;
+		}
+
+		.no-work input {
+			background-color: deeppink;
+			pointer-events: none;
+		}
+
+		.extra-hours input {
+			color: red;
+		}
+
+		table {
+			width: 100%;
+			table-layout: fixed;
+		}
+
+		th, td {
+			width: calc(100% / 16);
+			word-wrap: break-word;
+		}
+
+		input, select {
+			width: 100%;
+			box-sizing: border-box;
+			border: none;
+			outline: none;
+			padding: 5px;
+		}
+
+		select {
+			appearance: none;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+		}
+
+		.container-quinzena {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+		}
+
+		#datePicker, #localization {
+			width: 150px;
+			border: 1px solid #ccc;
+			padding: 5px;
+		}
+
+		#localization {
+			width: 120px;
+		}
+
+		.no-arrow {
+			background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCI+PHBhdGggZD0iTTEgMGwxMiAxMiIvPjxwYXRoIGQ9Ik0xMyAxTDEgMTMiIHN0cm9rZS13aWR0aD0iMiIvPjwvc3ZnPg==') no-repeat right center;
+			background-size: 12px;
+		}
+
+</style>
+</head>
+<body>
+	<div class="container-quinzena">
+		<select id="localization">
+			<option value="São Paulo">São Paulo</option>
+			<option value="Recife">Recife</option>
+		</select>
+		<input type="date" id="datePicker" />
+		<button id="prevQuinzena">&lt;</button>
+		<button id="nextQuinzena">&gt;</button>
+	</div>
+	<table class="table caption-top">
+		<thead>
+			<tr id="datas-header">
+				<th scope="col">Data</th>
+			</tr>
+			<tr id="dias-header">
+				<th scope="col">Dias</th>
+			</tr>
+		</thead>
+		<tbody id="timesheetBody">
+			<tr id="horas-row">
+				<th scope="row">Hours</th>
+			</tr>
+			<tr id="extra-hours-row" class="extra-hours">
+				<th scope="row">Extra Hours</th>
+			</tr>
+			<tr id="atividade-row">
+				<th scope="row">WBS</th>
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		Total de horas: <span id="totalHours">0</span>
+	</div>
+	<button id="submitButton">Submit</button>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const diasDaSemana = ["Sun","Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+			const tabelaHeaderDatas = document.getElementById("datas-header");
+			const tabelaHeaderDias = document.getElementById("dias-header");
+			const tabelaHorasRow = document.getElementById("horas-row");
+			const tabelaExtraHorasRow = document.getElementById("extra-hours-row");
+			const tabelaAtividadeRow = document.getElementById("atividade-row");
+			const datePicker = document.getElementById('datePicker');
+			const prevQuinzena = document.getElementById('prevQuinzena');
+			const nextQuinzena = document.getElementById('nextQuinzena');
+			const totalHoursSpan = document.getElementById('totalHours');
+			const submitButton = document.getElementById('submitButton');
+
+			let currentQuinzenaIndex = getCurrentQuinzenaIndex();
+
+			function getCurrentQuinzenaIndex() {
+				const today = new Date();
+				const currentMonth = today.getMonth();
+				const currentDay = today.getDate();
+				return currentMonth * 2 + (currentDay <= 15 ? 0 : 1);
+			}
+
+			function calculateQuinzena(index) {
+				const startYear = 2024;
+				const baseDate = new Date(startYear, 0, 1);
+				const isFirstHalf = index % 2 === 0;
+				const monthIndex = Math.floor(index / 2);
+				const monthStartDate = new Date(baseDate.getFullYear(), monthIndex, 1);
+				const quinStartDate = isFirstHalf ? monthStartDate : new Date(monthStartDate.getFullYear(), monthStartDate.getMonth(), 16);
+				const quinEndDate = isFirstHalf ? new Date(quinStartDate.getFullYear(), quinStartDate.getMonth(), 15) : new Date(quinStartDate.getFullYear(), quinStartDate.getMonth() + 1, 0);
+				return { start: quinStartDate, end: quinEndDate };
+			}
+
+			function updateTable() {
+				const quinzena = calculateQuinzena(currentQuinzenaIndex);
+				const startDate = quinzena.start;
+				const endDate = quinzena.end;
+
+				tabelaHeaderDatas.innerHTML = "<th scope='col'>Date</th>";
+				tabelaHeaderDias.innerHTML = "<th scope='col'>Days</th>";
+				tabelaHorasRow.innerHTML = "<th scope='row'>Hours</th>";
+				tabelaExtraHorasRow.innerHTML = "<th scope='row'>Extra Hours</th>";
+				tabelaAtividadeRow.innerHTML = "<th scope='row'>WBS</th>";
+
+				for (let date = new Date(startDate); date <= endDate; date.setDate(date.getDate() + 1)) {
+					const dayOfWeek = date.getDay();
+					const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+
+					const thData = document.createElement("th");
+					thData.textContent = date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+					tabelaHeaderDatas.appendChild(thData);
+
+					const thDia = document.createElement("th");
+					thDia.textContent = diasDaSemana[dayOfWeek];
+					tabelaHeaderDias.appendChild(thDia);
+
+					const tdHoras = document.createElement("td");
+					const tdExtraHoras = document.createElement("td");
+					const tdAtividade = document.createElement("td");
+
+					if (isWeekend) {
+						tdHoras.classList.add("weekend");
+						tdExtraHoras.classList.add("weekend");
+					} else {
+						const inputHoras = document.createElement("input");
+						inputHoras.type = "number";
+						inputHoras.min = "0";
+						inputHoras.max = "8";
+						tdHoras.appendChild(inputHoras);
+
+						const inputExtraHoras = document.createElement("input");
+						inputExtraHoras.type = "number";
+						inputExtraHoras.min = "0";
+						inputExtraHoras.max = "2";
+						inputExtraHoras.style.color = 'red';
+						tdExtraHoras.appendChild(inputExtraHoras);
+					}
+
+					const selectAtividade = document.createElement("select");
+					selectAtividade.classList.add("no-arrow");
+					const optionDefault = document.createElement("option");
+					optionDefault.value = "";
+					optionDefault.textContent = "";
+					selectAtividade.appendChild(optionDefault);
+
+					["A2030", "TR13019", "AT3976"].forEach(activity => {
+						const option = document.createElement("option");
+						option.value = activity;
+						option.textContent = activity;
+						selectAtividade.appendChild(option);
+					});
+					tdAtividade.appendChild(selectAtividade);
+
+					tabelaHorasRow.appendChild(tdHoras);
+					tabelaExtraHorasRow.appendChild(tdExtraHoras);
+					tabelaAtividadeRow.appendChild(tdAtividade);
+				}
+			}
+
+			function calculateTotalHours() {
+				const inputsHoras = tabelaHorasRow.querySelectorAll("input[type='number']");
+				const inputsExtraHoras = tabelaExtraHorasRow.querySelectorAll("input[type='number']");
+				let total = 0;
+
+				inputsHoras.forEach(input => {
+					total += Number(input.value) || 0;
+				});
+
+				inputsExtraHoras.forEach(input => {
+					total += Number(input.value) || 0;
+				});
+
+				totalHoursSpan.textContent = total;
+			}
+
+			submitButton.addEventListener('click', () => {
+				const inputsHoras = tabelaHorasRow.querySelectorAll("input[type='number']");
+				const inputsExtraHoras = tabelaExtraHorasRow.querySelectorAll("input[type='number']");
+				let allFilled = true;
+
+				inputsHoras.forEach(input => {
+					if (input.value === "") {
+						allFilled = false;
+					}
+				});
+
+				if (!allFilled) {
+					alert('Por favor, preencha todos os campos de horas.');
+				} else {
+					alert('Formulário enviado!');
+				}
+			});
+
+			tabelaHorasRow.addEventListener('input', calculateTotalHours);
+			tabelaExtraHorasRow.addEventListener('input', calculateTotalHours);
+
+			prevQuinzena.addEventListener('click', () => {
+				setQuinzenaIndex(currentQuinzenaIndex - 1);
+			});
+
+			nextQuinzena.addEventListener('click', () => {
+				setQuinzenaIndex(currentQuinzenaIndex + 1);
+			});
+
+			datePicker.addEventListener('change', (e) => {
+				const selectedDate = new Date(e.target.value);
+				const currentMonth = selectedDate.getMonth();
+				const currentDay = selectedDate.getDate();
+				const newIndex = currentMonth * 2 + (currentDay <= 15 ? 0 : 1);
+				setQuinzenaIndex(newIndex);
+			});
+
+			function setQuinzenaIndex(index) {
+				currentQuinzenaIndex = index;
+				updateTable();
+			}
+
+			setQuinzenaIndex(currentQuinzenaIndex);
+		});
+	</script>
+</body>
+</html>

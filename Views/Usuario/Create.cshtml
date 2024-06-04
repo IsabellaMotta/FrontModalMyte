@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Adding new Employee";
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="~/css/AddNewEmployee.css">
+
+<body>
+    <div class="container-conteudo">
+        <h2 class="work-sans">Adding new Employee</h2>
+
+        <div class="container form-container">
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" class="form-control" placeholder="Enter name">
+                </div>
+                <div class="form-column">
+                    <label for="birthdate">Birthdate:</label>
+                    <input type="date" id="birthdate" class="form-control">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter email">
+                </div>
+                <div class="form-column">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter password">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="department">Department:</label>
+                    <select id="department" class="form-control">
+                        <option value="dev">Development</option>
+                        <option value="hr">Human Resources</option>
+                        <option value="sales">Sales</option>
+                    </select>
+                </div>
+                <div class="form-column">
+                    <label for="type">Type:</label>
+                    <select id="type" class="form-control">
+                        <option value="user">User</option>
+                        <option value="admin">Administrator</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row justify-content-end">
+                <button id="saveButton">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Adiciona um manipulador de evento de clique ao botão "Save"
+        document.getElementById('saveButton').addEventListener('click', function () {
+            // Salvando valores dos campos para montar obj - mapeando as informaçoes para requisição que será feita
+            var name = document.getElementById('name').value;
+            var birthdate = document.getElementById('birthdate').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var department = document.getElementById('department').value;
+            var type = document.getElementById('type').value;
+
+            // Montando Obj com os valores salvos
+            var employeeData = {
+                name: name,
+                birthdate: birthdate,
+                email: email,
+                password: password,
+                department: department,
+                type: type
+            };
+
+            // Redireciona para a página desejada (AdminUsuario)
+            window.location.href = 'http://localhost:36224/Usuario';
+        });
+    </script>
+</body>

@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Create WBS";
+
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/css/EditingWBS.css">
+
+</head>
+<body>
+    <!-- Mudança no título -->
+    <h1 class="title">Creating WBS</h1>
+
+
+    <div class="container form-container">
+        <!-- CADA LINHA CONSEGUE CARREGAR 2 DIVS -->
+        <!-- PRIMEIRA LINHA/ROW -->
+        <div class="form-row">
+
+            <div class="form-column">
+                <label for="name">Name:</label>
+                <input type="text" id="name" class="form-control" placeholder="Example: Day off">
+            </div>
+
+            <div class="form-column">
+                <label for="code">Code:</label>
+                <input type="text" id="code" class="form-control" placeholder="Example: Wbs3879">
+            </div>
+        </div>
+
+        <!-- SEGUNDA LINHA/ROW -->
+        <div class="form-row">
+            <div class="form-column">
+                <label for="description">Description:</label>
+                <textarea type="description" id="description" class="form-controlgrande" placeholder="Example: Wbs used for day offs."></textarea>
+            </div>
+        </div>
+
+        <!-- TERCEIRA LINHA/ROW -->
+        <div class="form-row">
+        </div>
+
+        <!-- Mudança na localização do botão Save -->
+    </div>
+    <div class="form-row justify-content-end">
+        <button type="button" class="btn btn-save">Save</button>
+    </div>
+
+
+</body>
+
+</html>

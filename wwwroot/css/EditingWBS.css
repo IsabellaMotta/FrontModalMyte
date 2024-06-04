@@ -1,0 +1,186 @@
+﻿/* Reset de estilos padrão */
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+button {
+    /*background-color: darkorange !important;*/
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-radius: 5px;
+}
+
+/* Estilo do botão de salvar */
+.btn-save {
+    background-color: orange !important;
+    color: white !important;
+    border: none; /* Remove a borda ao redor do botão */
+    cursor: pointer;
+    border-radius: 20px; /* Aumentando o raio da borda para torná-lo mais arredondado */
+    padding: 8px 14px; /* Reduzindo o padding para torná-lo mais fino */
+    box-shadow: none !important; /* Remove qualquer sombra do botão */
+    text-shadow: none !important; /* Remove qualquer sombra do texto do botão */
+    background-image: none !important; /* Remove qualquer brilho de imagem de fundo */
+    filter: none !important; /* Remove qualquer efeito de filtro */
+    outline: none !important; /* Remove qualquer contorno */
+    width: 293px;
+    margin-left: 50px; /* Adiciona margem à esquerda, empurrando o botão para a direita */
+}
+
+    .btn-save:hover {
+        background-color: darkorange !important; /* Altera a cor de fundo quando o mouse passa sobre o botão */
+        outline: 2px solid darkorange !important; /* Adiciona uma borda laranja ao colocar o mouse sobre o botão */
+        box-shadow: none !important; /* Remove qualquer sombra do botão ao passar o mouse */
+    }
+
+/* Estilo do botão de cancelar */
+.btn-secondary {
+    background-color: darkorange !important;
+    color: white;
+    border: none; /* Remove a borda ao redor do botão */
+    cursor: pointer;
+    border-radius: 5px; /* Aumentando o raio da borda para torná-lo mais arredondado */
+    padding: 8px 14px; /* Reduzindo o padding para torná-lo mais fino */
+    box-shadow: none !important; /* Remove qualquer sombra do botão */
+    text-shadow: none !important; /* Remove qualquer sombra do texto do botão */
+    background-image: none !important; /* Remove qualquer brilho de imagem de fundo */
+    filter: none !important; /* Remove qualquer efeito de filtro */
+    outline: none !important; /* Remove qualquer contorno */
+}
+
+    .btn-secondary:hover {
+        background-color: orange !important; /* Altera a cor de fundo quando o mouse passa sobre o botão */
+        outline: 2px solid darkorange !important; /* Adiciona uma borda laranja ao colocar o mouse sobre o botão */
+        box-shadow: none !important; /* Remove qualquer sombra do botão ao passar o mouse */
+    }
+
+/* Estilo para o botão de fechar do modal */
+.btn-close {
+    margin: 0;
+    background-color: none !important;
+}
+
+    /* Remover a borda de foco azul do botão de fechar do modal */
+    .btn-close:focus {
+        outline: none !important;
+    }
+
+
+
+/* Estilo do título */
+.title {
+    color: darkorange !important; /* Mudando a cor para laranja */
+    font-size: 24px; /* Diminuindo o tamanho da fonte */
+    margin-bottom: 20px; /* Adicionando margem inferior */
+    margin-top: 10px; /* Adicionando margem superior - veio 10 */
+    text-align: left; /* Alinhando à direita */
+    border-bottom: 3px solid #ccc; /* Adiciona uma borda inferior cinza */
+}
+
+.work-sans {
+    color: darkorange;
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: initial;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
+    border-bottom: 3px solid #ccc; /* Adiciona uma borda inferior cinza */
+}
+
+.work-sans-modal {
+    color: darkorange;
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: initial;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
+}
+
+.form-check-input:checked {
+    background-color: darkorange; /* Cor do switch quando está ativado */
+    border-color: darkorange; /* Borda do switch quando está ativado */
+}
+
+.form-check-input {
+    background-color: #E4E4E5; /* Cor do switch quando está desativado */
+}
+
+/* Controla a disposição dos campos a serem preenchidos */
+.form-container {
+    max-width: 650px; /* Definindo a largura máxima do contêiner */
+    margin: 0 auto; /* Centralizando o contêiner na página */
+    margin-top: 30px; /* Adicionando margem superior */
+}
+
+/* Mudança no tamanho dos campos de entrada */
+.form-control {
+    width: 100%; /* Definindo largura igual para todos os campos */
+}
+
+.form-controlgrande {
+    height: 150px; /* Defina a altura desejada aqui */
+    width: 100%;
+}
+
+/* Controla a disposição dos elementos */
+.form-column {
+    display: flex;
+    flex-direction: column;
+    width: 48%; /* Distribuindo igualmente o espaço entre as colunas */
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.form-row-description {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* Estilo dos campos de entrada e seleção */
+.input-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+    .input-field label {
+        width: 150px; /* Ajustando largura do rótulo */
+        margin-right: 20px;
+        font-weight: bold;
+    }
+
+    .input-field input,
+    .input-field select {
+        flex: 1; /* Expandindo para preencher o espaço restante */
+        padding: 10px; /* Diminuindo o padding */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+/* Estilo para duas colunas centralizadas */
+.two-columns {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+    .two-columns .form-column {
+        width: calc(50% - 20px);
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }

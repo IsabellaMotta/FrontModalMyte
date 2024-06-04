@@ -1,0 +1,72 @@
+﻿/* Reset de estilos padrão */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo da barra de navegação */
+.navbar {
+    background-color: #FEFEFE;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Estilo do título *//**/
+.title {
+    color: orange; /* Mudando a cor para laranja */
+    font-size: 24px; /* Diminuindo o tamanho da fonte */
+    margin-bottom: 20px; /* Adicionando margem inferior */
+    margin-top: 10px; /* Adicionando margem superior - veio 10 */
+    text-align: left; /* Alinhando à direita */
+    border-bottom: 3px solid #ccc; /* Adiciona uma borda inferior cinza */
+}
+
+/* Controla a disposição dos campos a serem preenchidos */
+.form-container {
+    max-width: 650px; /* Definindo a largura máxima do contêiner */
+    margin: 0 auto; /* Centralizando o contêiner na página */
+    margin-top: 30px; /* Adicionando margem superior */
+}
+
+/* Mudança no tamanho dos campos de entrada */
+.form-control {
+    width: 100%; /* Definindo largura igual para todos os campos */
+}
+
+
+
+/* Controla a disposição dos elementos */
+.form-column {
+    display: flex;
+    flex-direction: column;
+    width: 48%; 
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+
+/* Botão de "SALVAR"*/
+
+.justify-content-end button {
+    background-color: darkorange;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-radius: 5px;
+}
+button:hover {
+    background-color: orange;
+}
+
+

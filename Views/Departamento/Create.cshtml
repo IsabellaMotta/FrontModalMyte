@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Create Department";
+
+}
+
+<!DOCTYPE html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/EditingDepartment.css">
+</head>
+
+<body>
+    <!-- Mudança no título -->
+    <h1 class="title">Creating Department</h1>
+
+    <div class="container form-container">
+        <!-- CADA LINHA CONSEGUE CARREGAR 2 DIVS -->
+        <!-- PRIMEIRA LINHA/ROW -->
+        <div class="form-row">
+            <div class="form-column">
+                <label for="name">Name:</label>
+                <input type="text" id="name" class="form-control" placeholder="RH">
+            </div>
+        </div>
+    </div>
+    <div class="form-row justify-content-end">
+        <button type="button" class="btn btn-save">Save</button>
+    </div>
+
+    <!-- Script JavaScript para manipulação do botão "Save" -->
+    <script>
+        // Adiciona um manipulador de evento de clique ao botão "Save"
+        document.querySelector('.btn-save').addEventListener('click', function () {
+            // Salvar valores dos campos para montar objeto
+            var name = document.getElementById('name').value;
+
+            // Montar objeto com os valores salvos
+            var departmentData = {
+                name: name,
+            };
+
+            // Redirecionar para a página de criação do departamento
+            window.location.href = 'http://localhost:36224/departamento';
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Editing WBS";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/EditingWBS.css">
+</head>
+<body>
+    <!-- Mudança no título -->
+    <h1 class="title">Editing WBS</h1>
+
+    <div class="container form-container">
+        <div class="form-row">
+            <div class="form-column">
+                <label for="name">Name:</label>
+                <input type="text" id="name" class="form-control" placeholder="Enter name">
+            </div>
+            <div class="form-column">
+                <label for="code">Code:</label>
+                <input type="text" id="code" class="form-control" placeholder="Enter code">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-column">
+                <label for="description">Description:</label>
+                <textarea id="description" class="form-control" placeholder="Enter description"></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

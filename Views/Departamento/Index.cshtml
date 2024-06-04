@@ -1,0 +1,160 @@
+﻿@{
+	ViewData["Title"] = "Departament List";
+
+}
+
+
+<!DOCTYPE html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/GerenciarUsuarios.css">
+    <link rel="stylesheet" href="~/css/EditingWBS.css">
+</head>
+
+<body>
+    <div class="container-conteudo">
+
+        <h2 class="work-sans">Departament List</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Department Name</th>
+                    <th scope="col">Manager email</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Active</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Marketing</td>
+                    <td>annie@gmail.com</td>
+                    <td>
+                        <a href="#" class="editDepartmentLink"><img role="button" class="mini-icons" src="~/images/pencil.svg" /></a>
+                    </td>
+                    <td>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked1" checked>
+                            <label class="form-check-label" for="flexSwitchCheckChecked1"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Negócios</td>
+                    <td>Bianca@gmail.com</td>
+                    <td>
+                        <a href="#" class="editDepartmentLink"><img role="button" class="mini-icons" src="~/images/pencil.svg" /></a>
+                    </td>
+                    <td>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked2" checked>
+                            <label class="form-check-label" for="flexSwitchCheckChecked2"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Tech</td>
+                    <td>Fulano@gmail.com</td>
+                    <td>
+                        <a href="#" class="editDepartmentLink"><img role="button" class="mini-icons" src="~/images/pencil.svg" /></a>
+                    </td>
+                    <td>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked3" checked>
+                            <label class="form-check-label" for="flexSwitchCheckChecked3"></label>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="btn-position">
+        <button id="newDepartmentButton">New Department</button>
+    </div>
+
+    <!-- Modal de edição do Department -->
+    <div class="modal fade" id="editDepartmentModal" tabindex="-1" aria-labelledby="editDepartmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="work-sans-modal" id="editDepartmentModalLabel">Editing Department</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulário de edição de departamento -->
+                    <div class="form-container">
+                        <div class="input-field">
+                            <label for="departmentName">Department Name:</label>
+                            <input type="text" id="departmentName" class="form-control" placeholder="Enter department name">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" id="saveChangesButton">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript para manipulação do modal -->
+    <script>
+        // Adiciona um manipulador de evento de clique aos ícones de lápis
+        document.querySelectorAll('.editDepartmentLink').forEach(item => {
+            item.addEventListener('click', function (event) {
+                // Impedir o comportamento padrão do link
+                event.preventDefault();
+
+                // Obter o modal de edição do Department pelo ID
+                var modal = document.getElementById('editDepartmentModal');
+
+                // Abrir o modal
+                var modalInstance = new bootstrap.Modal(modal);
+                modalInstance.show();
+            });
+        });
+
+        // Adiciona um manipulador de evento de clique ao botão "Save changes"
+        document.getElementById('saveChangesButton').addEventListener('click', function () {
+            // Coletar os dados do formulário para atualizar no banco de dados
+            var name = document.getElementById('departmentName').value;
+
+            // Criar um objeto com os dados do formulário DEMONSTRATIVO/EXEMPLO
+            /*var employeeData = {
+                name: name,
+                birthdate: birthdate,
+                email: email,
+                password: password,
+                department: department,
+                type: type
+            };*/
+
+            //====================================================================
+            //(mais ou manos aqui que será chamao o metodo/função que adiciona o
+            // novo funcionario no banco de dados)
+            //====================================================================
+
+            // Fechar o modal após salvar as alterações
+            var modal = document.getElementById('editDepartmentModal');
+            var modalInstance = bootstrap.Modal.getInstance(modal);
+            modalInstance.hide();
+        });
+
+        // Adiciona um manipulador de evento de clique ao botão "New Department"
+        document.getElementById('newDepartmentButton').addEventListener('click', function () {
+            // Redirecionar para a página de criação de departamento
+            window.location.href = 'http://localhost:36224/departamento/create'; // Ajuste para a URL correta
+        });
+    </script>
+</body>
+
+</html>

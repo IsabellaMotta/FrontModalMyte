@@ -1,0 +1,194 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.logo-myte{
+    margin-left:20px;
+    margin-top:10px;
+    width:100px;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+    /* background */
+    body.login-page {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: url('/images/background.png') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+/* centralizar box do login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Caixa de login */
+.login-box {
+    display: flex;
+    width: 800px;
+    height: 600px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Lado esquerdo com a imagem */
+.login-left {
+    flex: 1;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Imagem do lado esquerdo */
+.login-image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Lado direito com o formulário */
+.login-right {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Estilo para o formulário */
+form {
+    width: 100%;
+}
+
+    form h2 {
+        margin-bottom: 20px;
+    }
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input {
+        width: calc(100% - 10px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+.btn-login {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+    .btn-login:hover {
+        background-color: #0056b3;
+    }
+
+.navbar {
+    font-family: "Roboto", sans-serif;
+    border-bottom: 1px solid #C5BBBB !important; /* define a cor da borda inferior */
+}
+
+.navbar-transparent {
+    background-color: transparent; /* torna o fundo transparente */
+    box-shadow: none !important; /* remove a sombra */
+}
+
+.navbar a.nav-link {
+    color: #49454F;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px;
+    position: relative;
+    display: inline-block; 
+}
+
+    /* Cor do texto na navegação quando selecionado */
+    .navbar a.nav-link.active-bar,
+    .navbar a.nav-link.active-bar:hover,
+    .navbar a.nav-link.active-bar:focus {
+        color: #FF5800 !important; /* Cor laranja */
+    }
+
+
+    /* barra laranja na página atual */
+    .navbar a.nav-link.active-bar::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -8px;
+        height: 4px;
+        width: 80%;
+        background-color: #FF5800;
+        border-radius: 10px;
+    }
+
+    /* Efeito de hover para a barra laranja */
+    .navbar a.nav-link::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -8px;
+        height: 4px;
+        width: 0;
+        max-width: 30%;
+        background-color: #FF5800;
+        border-radius: 10px;
+        transition: width 0.8s ease; /* transição */
+    }
+
+    /* Efeito de hover para a barra laranja em todos os links */
+    .navbar a.nav-link:hover::after {
+        width: calc(100% - 20px);
+    }
+
+    /* Remover transição no link ativo (clique) */
+    .navbar a.nav-link.active-bar::after {
+        transition: none; 
+    }
+
+
+
+
+
+

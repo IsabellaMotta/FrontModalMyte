@@ -1,0 +1,65 @@
+﻿
+.mini-icons {
+    width: 20px;
+}
+
+.work-sans {
+    color: darkorange;
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: initial;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
+}
+
+body {
+}
+
+.mini-icons {
+    width: 20px;
+}
+
+.work-sans {
+    color: darkorange;
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: initial;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.form-check-input:checked {
+    background-color: darkorange; /* Cor do switch quando está ativado */
+    border-color: darkorange; /* Borda do switch quando está ativado */
+}
+
+.form-check-input {
+    background-color: #E4E4E5; /* Cor do switch quando está desativado */
+
+}
+
+.btn-position {
+    margin-top: 90px;
+    display: flex !important;
+    justify-content: flex-end;
+    padding-right: 60px;
+}
+
+
+button {
+    background-color: darkorange;
+    color: white;
+    border: none;
+    cursor: pointer;  
+}
+
+    button:hover {
+        background-color: orange;
+    }

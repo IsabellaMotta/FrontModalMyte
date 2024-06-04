@@ -1,0 +1,78 @@
+﻿
+.profile{
+    width: 100px;
+}
+
+
+.mini-icons {
+    width: 20px;
+}
+
+.work-sans {
+    color: darkorange;
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: initial;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
+}
+
+
+
+.icon {
+    width: 20px;
+    height: auto;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+input, button {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button {
+    background-color: darkorange;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: orange;
+    }
+
+
+.conteiner-conteudo {
+    display: flex;
+    gap: 200px;
+    border: 50px;
+    border-color: blue;
+    padding-right: 0px;
+    padding-left: 90px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.conteudo {
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+}
+
+
+
+.btn-position {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 60px;
+}
+
+button {
+    background-color: darkorange;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
